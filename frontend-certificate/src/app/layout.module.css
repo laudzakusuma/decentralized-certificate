@@ -1,0 +1,34 @@
+.bgAnimation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.floatingShapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape {
+  position: absolute;
+  background: linear-gradient(45deg, var(--primary-start), var(--primary-end));
+  border-radius: 50%;
+  animation: float 20s infinite linear;
+}
+
+.shape:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+.shape:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 10%; animation-delay: -5s; }
+.shape:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: -10s; }
+.shape:nth-child(4) { width: 100px; height: 100px; top: 40%; right: 30%; animation-delay: -15s; }
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+  33% { transform: translateY(-30px) rotate(120deg); opacity: 0.3; }
+  66% { transform: translateY(30px) rotate(240deg); opacity: 0.8; }
+  100% { transform: translateY(0px) rotate(360deg); opacity: 0.8; }
+}

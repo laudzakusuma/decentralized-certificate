@@ -1,0 +1,35 @@
+.walletStatus {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.walletStatus:hover {
+    transform: scale(1.05);
+}
+
+.walletConnected {
+  color: var(--primary-end);
+}
+
+.walletDisconnected {
+  color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .walletStatus {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin: 1rem auto;
+      width: fit-content;
+  }
+}

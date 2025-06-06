@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 
 import CertificateABI from '../abi/Certificate.json';
 
-const CONTRACT_ADDRESS = "0xB7C263Af55eDC652a3816fb43ff48D0e87D6989F"; 
+const CONTRACT_ADDRESS = "0x5F3b8A1a638De722be1C521456b1915A2871e0A3"; 
 
 const Web3Context = createContext();
 

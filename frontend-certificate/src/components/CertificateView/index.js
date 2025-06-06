@@ -48,7 +48,7 @@ const CertificateView = ({ data, onBack }) => {
       <div className={styles.footer}>
         <p>Pemilik Sah: {formatAddress(data.owner)}</p>
         <a 
-          href={`https://amoy.polygonscan.com/token/${"0xALAMAT_KONTRAK_ANDA"}?a=${data.tokenId}`} 
+          href={`https://amoy.polygonscan.com/token/${"0x5F3b8A1a638De722be1C521456b1915A2871e0A3"}?a=${data.tokenId}`} 
           target="_blank" 
           rel="noopener noreferrer"
           className={styles.explorerLink}
