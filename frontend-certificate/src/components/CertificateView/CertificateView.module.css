@@ -1,0 +1,121 @@
+.card {
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(145deg, rgb(var(--surface-rgb)), rgb(var(--background-start-rgb)));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-gold);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.checkIcon {
+  color: rgb(var(--success-rgb));
+  background-color: rgba(var(--success-rgb), 0.1);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.backButton:hover {
+  color: var(--text-light);
+}
+
+.content {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-gold);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.courseName {
+  font-size: 2.2rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.awardedTo {
+  margin-top: 1.5rem;
+  color: var(--text-dark);
+}
+
+.recipientName {
+  font-size: 1.8rem;
+  margin: 0.5rem 0 2rem 0;
+  color: var(--primary-gold);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.detailItem span {
+  font-size: 0.8rem;
+  color: var(--text-dark);
+}
+.detailItem strong {
+  font-size: 1rem;
+}
+
+.footer {
+  padding: 1rem 1.5rem;
+  background: rgba(0,0,0,0.2);
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.explorerLink {
+  color: var(--primary-gold);
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+.explorerLink:hover {
+  text-decoration: underline;
+}

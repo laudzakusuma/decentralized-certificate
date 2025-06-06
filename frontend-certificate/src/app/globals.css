@@ -5,6 +5,8 @@
   --primary-gold: #FFD700;
   --text-light: #f1f5f9;             /* slate-100 */
   --text-dark: #94a3b8;              /* slate-400 */
+  --success-rgb: 22, 163, 74;       /* green-600 */
+  --error-rgb: 220, 38, 38;         /* red-600 */
 }
 
 body {
@@ -23,4 +25,17 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--background-start-rgb));
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--surface-rgb));
+  border-radius: 10px;
+  border: 2px solid rgb(var(--background-start-rgb));
 }
