@@ -2,13 +2,9 @@
 import { createContext, useContext, useState, useCallback } from 'react';
 import { ethers } from 'ethers';
 
-// Impor ABI dari folder backend Hardhat Anda.
-// Pastikan path ini benar setelah Anda menyalin folder artifacts.
-// Anda perlu menyalin folder `artifacts` dari proyek Hardhat ke root proyek frontend ini.
-import CertificateABI from '../artifacts/contracts/Certificate.sol/Certificate.json';
+import CertificateABI from '../abi/Certificate.json';
 
-// GANTI DENGAN ALAMAT KONTRAK ANDA SETELAH DEPLOYMENT
-const CONTRACT_ADDRESS = "0xALAMAT_KONTRAK_ANDA"; 
+const CONTRACT_ADDRESS = "0xB7C263Af55eDC652a3816fb43ff48D0e87D6989F"; 
 
 const Web3Context = createContext();
 
