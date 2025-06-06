@@ -2,8 +2,6 @@
 import { useState } from 'react';
 import styles from './page.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
-
-// Impor semua komponen yang diperlukan
 import Header from '@/components/Header';
 import WalletStatus from '@/components/WalletStatus';
 import HomeSection from '@/components/HomeSection';
@@ -17,12 +15,11 @@ export default function Home() {
   const [certificateData, setCertificateData] = useState(null);
 
   const renderSection = () => {
-    // Jika ada data sertifikat, tampilkan view sertifikat
+
     if (certificateData) {
       return <CertificateView data={certificateData} onBack={() => setCertificateData(null)} />;
     }
 
-    // Jika tidak, tampilkan section yang aktif
     switch (activeSection) {
       case 'home':
         return <HomeSection />;

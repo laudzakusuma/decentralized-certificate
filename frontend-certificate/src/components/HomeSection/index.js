@@ -17,13 +17,13 @@ const HomeSection = () => {
             </p>
             
             <div className={styles.featuresGrid}>
-                <FeatureCard icon="🔐" title="Keamanan Blockchain" color="var(--primary-start)">
+                <FeatureCard title="Keamanan Blockchain" color="var(--primary-start)">
                     Sertifikat disimpan dalam blockchain yang tidak dapat diubah dan dimanipulasi.
                 </FeatureCard>
-                <FeatureCard icon="⚡" title="Verifikasi Instan" color="var(--primary-end)">
+                <FeatureCard title="Verifikasi Instan" color="var(--primary-end)">
                     Verifikasi keaslian sertifikat dalam hitungan detik dengan teknologi smart contract.
                 </FeatureCard>
-                <FeatureCard icon="🌐" title="Akses Global" color="var(--primary-start)">
+                <FeatureCard title="Akses Global" color="var(--primary-start)">
                     Dapat diakses dari mana saja di dunia tanpa batas geografis.
                 </FeatureCard>
             </div>

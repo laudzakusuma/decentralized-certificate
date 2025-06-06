@@ -27,16 +27,16 @@ const AboutSection = () => {
                 <h3 className={styles.subTitle}>Teknologi yang Digunakan</h3>
                 <ul className={styles.techList}>
                     <TechListItem color="var(--primary-start)">
-                        <strong>🔗 Blockchain Polygon:</strong> Untuk keamanan dan efisiensi biaya
+                        <strong> Blockchain Polygon:</strong> Untuk keamanan dan efisiensi biaya
                     </TechListItem>
                     <TechListItem color="var(--primary-end)">
-                        <strong>📝 Smart Contract ERC-721:</strong> Standard NFT yang dimodifikasi untuk Soulbound Token
+                        <strong> Smart Contract ERC-721:</strong> Standard NFT yang dimodifikasi untuk Soulbound Token
                     </TechListItem>
                     <TechListItem color="var(--primary-start)">
-                        <strong>🌐 IPFS:</strong> Penyimpanan terdesentralisasi untuk metadata sertifikat
+                        <strong> IPFS:</strong> Penyimpanan terdesentralisasi untuk metadata sertifikat
                     </TechListItem>
                     <TechListItem color="var(--primary-end)">
-                        <strong>🔐 Kriptografi:</strong> Enkripsi tingkat tinggi untuk keamanan data
+                        <strong> Kriptografi:</strong> Enkripsi tingkat tinggi untuk keamanan data
                     </TechListItem>
                 </ul>
 
