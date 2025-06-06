@@ -1,0 +1,71 @@
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.mainTitle {
+  color: var(--primary-start);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.intro {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.subTitle {
+  color: var(--primary-end);
+  margin: 3rem 0 1.5rem 0;
+  border-bottom: 1px solid var(--primary-end);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.techList {
+  list-style: none;
+  padding: 0;
+}
+
+.techItem {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background: rgba(79, 172, 254, 0.1);
+  border-radius: 10px;
+  border-left: 4px solid var(--tech-glow);
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.advantageCard {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.advantageCard:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.advantageCard h4 {
+  margin-bottom: 0.5rem;
+}

@@ -1,102 +1,82 @@
 'use client';
 import { useState } from 'react';
 import styles from './AdminPanel.module.css';
-import { motion } from 'framer-motion';
 import { useWeb3 } from '@/context/Web3Provider';
 
-// Placeholder untuk upload ke IPFS. Dalam proyek nyata,
-// ini akan menggunakan Pinata SDK atau API Infura.
-const uploadToIPFS = async (recipientName, courseName) => {
-  // Ini hanya simulasi. Seharusnya ada proses pembuatan gambar
-  // dan upload file JSON & gambar ke IPFS.
-  const metadata = {
-    name: `Sertifikat untuk ${recipientName}`,
-    description: `Sertifikat ini diberikan atas penyelesaian kursus: ${courseName}.`,
-    image: "ipfs://QmZ4Y.../placeholder.png", // Ganti dengan CID gambar sertifikat asli
-    attributes: [
-      { trait_type: "Penerima", value: recipientName },
-      { trait_type: "Kursus", value: courseName },
-      { trait_type: "Tanggal", value: new Date().toLocaleDateString() },
-    ],
-  };
-  // Simulasi upload, mengembalikan URI palsu
-  const simulatedCID = 'QmXo7b...Z4fV'; // Contoh CID
-  console.log("Simulasi upload metadata ke IPFS:", metadata);
-  return `ipfs://${simulatedCID}`;
-};
-
-
 const AdminPanel = () => {
-  const { contract, setIsLoading, showNotification, isLoading } = useWeb3();
-  const [recipientAddress, setRecipientAddress] = useState('');
-  const [recipientName, setRecipientName] = useState('');
-  const [courseName, setCourseName] = useState('');
+    const { contract, setIsLoading, showNotification, isLoading } = useWeb3();
+    const [formState, setFormState] = useState({
+        studentName: '',
+        walletAddress: '',
+        studyProgram: '',
+        educationLevel: '',
+        graduationDate: '',
+        gpa: '',
+        certificateFile: null,
+    });
 
-  const handleMint = async (e) => {
-    e.preventDefault();
-    if (!contract) {
-      showNotification("Harap hubungkan wallet Anda terlebih dahulu.");
-      return;
-    }
-    if (!recipientAddress.trim() || !recipientName.trim() || !courseName.trim()) {
-      showNotification("Harap lengkapi semua field.");
-      return;
-    }
+    const handleInputChange = (e) => {
+        const { name, value, files } = e.target;
+        setFormState(prev => ({
+            ...prev,
+            [name]: files ? files[0] : value
+        }));
+    };
 
-    setIsLoading(true);
-    try {
-      // 1. Upload metadata ke IPFS
-      const tokenURI = await uploadToIPFS(recipientName, courseName);
-      if (!tokenURI) throw new Error("Gagal mengunggah metadata ke IPFS.");
-      
-      // 2. Panggil fungsi mint di smart contract
-      const tx = await contract.safeMint(recipientAddress, tokenURI);
-      
-      showNotification("Memproses transaksi... Mohon tunggu.", "success");
-      await tx.wait(); // Menunggu transaksi selesai
-      
-      showNotification(`Sertifikat berhasil diterbitkan! Tx: ${tx.hash.substring(0,10)}...`, "success");
-      // Reset form
-      setRecipientAddress('');
-      setRecipientName('');
-      setCourseName('');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Logika submit form (upload ke IPFS, panggil mint, dll.)
+        // Anda bisa mengintegrasikan logika dari AdminPanel sebelumnya ke sini
+        showNotification("Fitur penerbitan sedang dalam pengembangan.", "success");
+    };
 
-    } catch (err) {
-      showNotification("Gagal menerbitkan sertifikat.");
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    return (
+        <div className={styles.card}>
+            <h2 className={styles.title}>Portal Admin - Penerbitan Sertifikat</h2>
+            <form id="certificateForm" onSubmit={handleSubmit}>
+                {/* Nama Lengkap */}
+                <div className={styles.formGroup}>
+                    <label className={styles.formLabel}>Nama Lengkap Mahasiswa</label>
+                    <input type="text" name="studentName" onChange={handleInputChange} className={styles.formInput} placeholder="Masukkan nama lengkap" required />
+                </div>
+                {/* Alamat Wallet */}
+                <div className={styles.formGroup}>
+                    <label className={styles.formLabel}>Alamat Wallet Mahasiswa</label>
+                    <input type="text" name="walletAddress" onChange={handleInputChange} className={styles.formInput} placeholder="0x..." required />
+                </div>
+                {/* Program Studi */}
+                <div className={styles.formGroup}>
+                    <label className={styles.formLabel}>Program Studi</label>
+                    <select name="studyProgram" onChange={handleInputChange} className={styles.formSelect} required>
+                        <option value="">Pilih Program Studi</option>
+                        <option value="Teknik Informatika">Teknik Informatika</option>
+                        {/* Tambahkan opsi lain */}
+                    </select>
+                </div>
+                {/* Tanggal Kelulusan */}
+                 <div className={styles.formGroup}>
+                    <label className={styles.formLabel}>Tanggal Kelulusan</label>
+                    <input type="date" name="graduationDate" onChange={handleInputChange} className={styles.formInput} required />
+                </div>
+                {/* File Upload */}
+                <div className={styles.formGroup}>
+                    <label className={styles.formLabel}>Upload Desain Sertifikat</label>
+                    <div className={styles.fileUpload}>
+                        <input type="file" id="certificateFile" name="certificateFile" onChange={handleInputChange} accept="image/*,.pdf" />
+                        <label htmlFor="certificateFile" className={styles.fileUploadLabel}>
+                           {formState.certificateFile ? formState.certificateFile.name : 'Klik untuk upload file'}
+                        </label>
+                    </div>
+                </div>
 
-  return (
-    <motion.div 
-      className={styles.wrapper}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <h1 className={styles.title}>Admin Panel</h1>
-      <p className={styles.subtitle}>Terbitkan sertifikat baru untuk pengguna.</p>
-      <form onSubmit={handleMint} className={styles.form}>
-        <div className={styles.inputGroup}>
-          <input type="text" id="recipientAddress" value={recipientAddress} onChange={(e) => setRecipientAddress(e.target.value)} className={styles.input} placeholder=" " disabled={isLoading} />
-          <label htmlFor="recipientAddress" className={styles.label}>Alamat Wallet Penerima</label>
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <button type="submit" className={styles.btn} disabled={isLoading}>
+                        {isLoading ? <span className={styles.loader}></span> : 'Terbitkan Sertifikat'}
+                    </button>
+                </div>
+            </form>
         </div>
-        <div className={styles.inputGroup}>
-          <input type="text" id="recipientName" value={recipientName} onChange={(e) => setRecipientName(e.target.value)} className={styles.input} placeholder=" " disabled={isLoading} />
-          <label htmlFor="recipientName" className={styles.label}>Nama Lengkap Penerima</label>
-        </div>
-        <div className={styles.inputGroup}>
-          <input type="text" id="courseName" value={courseName} onChange={(e) => setCourseName(e.target.value)} className={styles.input} placeholder=" " disabled={isLoading} />
-          <label htmlFor="courseName" className={styles.label}>Nama Kursus/Pelatihan</label>
-        </div>
-        <button type="submit" className={styles.submitButton} disabled={isLoading}>
-          {isLoading ? <span className={styles.spinner}></span> : 'Terbitkan Sertifikat'}
-        </button>
-      </form>
-    </motion.div>
-  );
+    );
 };
 
 export default AdminPanel;
