@@ -28,7 +28,7 @@ const Header = ({ activeSection, setActiveSection }) => {
 
     return (
         <header className={styles.header}>
-            <h1 className={styles.logo}>CertifiChain</h1>
+            <h1 className={styles.logo}>CERTHREEFICATE</h1>
             <p className={styles.tagline}>Sistem Verifikasi Sertifikat Terdesentralisasi Yang Aman & Terpercaya</p>
             <nav className={styles.nav}>
                 <button className={`${styles.navButton} ${activeSection === 'home' ? styles.active : ''}`} onClick={(e) => handleNavClick(e, 'home')}>Beranda</button>

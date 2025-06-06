@@ -11,7 +11,6 @@ export const metadata = {
   description: 'Platform verifikasi sertifikat digital terdesentralisasi',
 };
 
-// Buat file `src/app/layout.module.css` untuk styling layout
 const BackgroundAnimation = () => (
   <div className={styles.bgAnimation}>
     <div className={styles.floatingShapes}>
