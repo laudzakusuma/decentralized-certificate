@@ -11,7 +11,6 @@ describe("Certificate Contract (Upgraded)", function () {
     await certificate.waitForDeployment();
   });
 
-  // Tes yang sudah ada sebelumnya...
   it("Should deploy successfully and set the right owner", async function () {
     expect(await certificate.owner()).to.equal(owner.address);
   });
@@ -29,16 +28,14 @@ describe("Certificate Contract (Upgraded)", function () {
     ).to.be.revertedWith("Certificate: This is a Soulbound token and cannot be transferred.");
   });
 
-  // --- TES BARU UNTUK FITUR BATCH MINTING ---
   describe("Batch Minting", function() {
     it("Should allow the owner to batch mint multiple certificates", async function() {
         const recipients = [addr1.address, addr2.address, addr3.address];
         const tokenURIs = ["ipfs://uri1", "ipfs://uri2", "ipfs://uri3"];
 
-        // Panggil fungsi batchMint
         await certificate.connect(owner).batchMint(recipients, tokenURIs);
 
-        // Verifikasi setiap sertifikat
+        // Verifikasi setiap sertifikat yang baru dibuat
         expect(await certificate.ownerOf(0)).to.equal(addr1.address);
         expect(await certificate.tokenURI(0)).to.equal("ipfs://uri1");
         
@@ -60,8 +57,8 @@ describe("Certificate Contract (Upgraded)", function () {
     });
 
     it("Should revert if array lengths do not match", async function() {
-        const recipients = [addr1.address, addr2.address]; // 2 penerima
-        const tokenURIs = ["ipfs://mismatch"]; // Hanya 1 URI
+        const recipients = [addr1.address, addr2.address]; 
+        const tokenURIs = ["ipfs://mismatch"]; 
 
         await expect(
             certificate.connect(owner).batchMint(recipients, tokenURIs)
